@@ -1,0 +1,10 @@
+//Arquivo que repassa para o sequelize-cli as configurações de conexão com o banco em database.js
+
+const path = require('path'); //Trara caminhos no Node
+//__dirname -> refere-se ao diretorio atual do .sequelizerc
+//As vírgulas após __dirname indicam um caminho de diretórios
+//migrations-path -> Irá armazenar as migrations
+module.exports = {
+    config: path.resolve(__dirname, 'src', 'config', 'database.js'),
+    'migrations-path': path.resolve(__dirname, 'src', 'database', 'migrations'),
+};
