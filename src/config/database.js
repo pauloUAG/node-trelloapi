@@ -1,10 +1,10 @@
 //EXPORTANDO UM OBJETO DE CONFIGURAÇÃO DA BASE DE DADOS
 module.exports = {
      dialect: 'postgres',
-     host: 'ec2-3-214-53-225.compute-1.amazonaws.com',
-     username: 'igmpiiflxquble',
-     password: 'f727e86e2db4de64f9144e3eb6a1c97e55987931d34efee271bd2c10a5821bf3',
-     database: 'dd08ab1jvfca45',
+     host: 'ec2-107-21-214-101.compute-1.amazonaws.com',
+     username: 'wjtjiqpypyvbwv',
+     password: 'f5ef93cb065d6f0a894229f49f30d2073804845b9ddbba73525ca61f6d05a4db',
+     database: 'd752nk8p0vc9bn',
      define: {
           timestamps: true,
           underscored: true

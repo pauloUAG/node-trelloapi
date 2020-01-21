@@ -18,5 +18,36 @@ User.associate(connection.models); //Necessário para que a relação com User r
 List.associate(connection.models); 
 Card.associate(connection.models);
 
+if (!global.hasOwnProperty('db')) {
+    var Sequelize = require('sequelize')
+      , sequelize = null
+  
+    if (process.env.HEROKU_POSTGRESQL_BRONZE_URL) {
+      // the application is executed on Heroku ... use the postgres database
+      sequelize = new Sequelize(process.env.HEROKU_POSTGRESQL_BRONZE_URL, {
+        dialect:  'postgres',
+        protocol: 'postgres',
+        port:     match[4],
+        host:     match[3],
+        logging:  true //false
+      })
+    }
 
-module.exports = connection;
+    global.db = {
+      Sequelize: Sequelize,
+      sequelize: sequelize,
+      User:      sequelize.import(__dirname + './models/User'),
+      Board:      sequelize.import(__dirname + './models/Board'),
+      Card:      sequelize.import(__dirname + './models/Card'),
+      List:      sequelize.import(__dirname + './models/List'), 
+      // add your other models here
+    }
+  
+    /*
+      Associations can be defined here. E.g. like this:
+      global.db.User.hasMany(global.db.SomethingElse)
+    */
+  }
+
+
+module.exports = connection, global.db;
